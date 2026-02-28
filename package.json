@@ -1,0 +1,16 @@
+{
+  "name": "to-do-list",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Roman Beiba <beiba.roman96@gmail.com>",
+  "type": "commonjs",
+  "scripts": {
+    "clean": "rm -rf dist .parcel-cache",
+    "start": "parcel src/index.html",
+    "build": "npm run clean && parcel build src/index.html"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.3"
+  }
+}

@@ -1,0 +1,213 @@
+/* ===== Base / Reset ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  line-height: 1.5;
+  background: #f6f7fb;
+  color: #111827;
+}
+
+/* ===== Block: todo ===== */
+.todo {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.todo__container {
+  width: 100%;
+  max-width: 560px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  padding: 22px;
+}
+
+/* ===== Header ===== */
+.todo__header {
+  margin-bottom: 16px;
+}
+
+.todo__title {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.todo__subtitle {
+  margin: 6px 0 0;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+/* ===== Form ===== */
+.todo__form {
+  margin-top: 12px;
+  padding: 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fafafa;
+}
+
+.todo__label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  color: #374151;
+}
+
+.todo__controls {
+  display: flex;
+  gap: 10px;
+}
+
+.todo__input {
+  flex: 1;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 12px 12px;
+  font-size: 1rem;
+  outline: none;
+  background: #fff;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.todo__input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+.todo__add-btn {
+  border: none;
+  border-radius: 10px;
+  padding: 12px 14px;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    opacity 0.2s ease;
+}
+
+.todo__add-btn:hover {
+  opacity: 0.95;
+}
+
+.todo__add-btn:active {
+  transform: translateY(1px);
+}
+
+.todo__hint {
+  margin: 10px 0 0;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* ===== List ===== */
+.todo__list-wrap {
+  margin-top: 16px;
+}
+
+.todo__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ===== Element: item ===== */
+.todo__item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fff;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+/* Hover for item */
+.todo__item:hover {
+  border-color: #d1d5db;
+  background: #fcfcfc;
+}
+
+/* Task button (click to toggle done) */
+.todo__task {
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  font-size: 1rem;
+  color: #111827;
+  line-height: 1.35;
+}
+
+/* Done state (modifier) */
+.todo__item--done .todo__task {
+  text-decoration: line-through;
+  color: #6b7280;
+  opacity: 0.9;
+}
+
+/* Optional: add a subtle “done” background */
+.todo__item--done {
+  background: #f3f4f6;
+  border-color: #e5e7eb;
+}
+
+/* Remove button */
+.todo__remove {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  color: #ef4444;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.todo__remove:hover {
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.todo__remove:active {
+  transform: scale(0.96);
+}
+
+/* Empty state */
+.todo__empty {
+  margin: 12px 0 0;
+  color: #6b7280;
+  font-size: 0.95rem;
+  text-align: center;
+}
