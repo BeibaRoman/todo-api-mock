@@ -1,49 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang=en><meta charset=UTF-8><meta name=viewport content="width=device-width, initial-scale=1.0"><title>To Do List</title><link rel=stylesheet href=todo-api-mock.1f2a1ed7.css><body>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>To Do List</title>
-  <link rel="stylesheet" href="./css/styles.css">
-
-</head>
-
-<body>
-
-  <main class="todo">
-    <div class="todo__container">
-      <header class="todo__header">
-        <h1 class="todo__title">To Do List</h1>
-        <p class="todo__subtitle">Додавай задачі, відмічай виконані та видаляй непотрібні.</p>
+  <main class=todo>
+    <div class=todo__container>
+      <header class=todo__header>
+        <h1 class=todo__title>To Do List</h1>
+        <p class=todo__subtitle>Додавай задачі, відмічай виконані та видаляй непотрібні.</p>
       </header>
 
-      <form class="todo__form js-todo-form" autocomplete="off">
-        <label class="todo__label" for="todo-input">Нова задача</label>
+      <form class="js-todo-form todo__form" autocomplete=off>
+        <label class=todo__label for=todo-input>Нова задача</label>
 
-        <div class="todo__controls">
-          <input class="todo__input js-todo-input" id="todo-input" type="text" name="task"
-            placeholder="Наприклад: Купити хліб" maxlength="80" />
-          <button class="todo__add-btn js-todo-add" type="submit">
+        <div class=todo__controls>
+          <input class="js-todo-input todo__input" id=todo-input name=task placeholder="Наприклад: Купити хліб" maxlength=80>
+          <button class="js-todo-add todo__add-btn">
             Додати
           </button>
         </div>
 
-        <p class="todo__hint">Підказка: клік по задачі — виконано, хрестик — видалити.</p>
+        <p class=todo__hint>Підказка: клік по задачі — виконано, хрестик — видалити.</p>
       </form>
 
-      <section class="todo__list-wrap" aria-label="Список задач">
-        <ul class="todo__list js-todo-list">
+      <section class=todo__list-wrap aria-label="Список задач">
+        <ul class="js-todo-list todo__list">
         </ul>
 
-        <p class="todo__empty js-todo-empty" hidden>
+        <p class="js-todo-empty todo__empty" hidden>
           Немає задач. Додай першу 👇
         </p>
       </section>
     </div>
   </main>
 
-  <script type="module" src="./js/script.js"></script>
-</body>
+  <script type=module src=todo-api-mock.0c1fe12d.js></script>
 
-</html>
+

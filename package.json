@@ -6,9 +6,9 @@
   "author": "Roman Beiba <beiba.roman96@gmail.com>",
   "type": "commonjs",
   "scripts": {
-    "clean": "rm -rf dist .parcel-cache",
-    "start": "parcel docs/index.html",
-    "build": "npm run clean && parcel build docs/index.html"
+    "clean": "rm -rf docs .parcel-cache",
+    "start": "parcel src/index.html",
+    "build": "npm run clean && parcel build src/index.html --dist-dir docs --public-url ./"
   },
   "devDependencies": {
     "buffer": "^6.0.3",

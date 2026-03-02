@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do List</title>
+  <link rel="stylesheet" href="./css/styles.css">
+
+</head>
+
+<body>
+
+  <main class="todo">
+    <div class="todo__container">
+      <header class="todo__header">
+        <h1 class="todo__title">To Do List</h1>
+        <p class="todo__subtitle">Додавай задачі, відмічай виконані та видаляй непотрібні.</p>
+      </header>
+
+      <form class="todo__form js-todo-form" autocomplete="off">
+        <label class="todo__label" for="todo-input">Нова задача</label>
+
+        <div class="todo__controls">
+          <input class="todo__input js-todo-input" id="todo-input" type="text" name="task"
+            placeholder="Наприклад: Купити хліб" maxlength="80" />
+          <button class="todo__add-btn js-todo-add" type="submit">
+            Додати
+          </button>
+        </div>
+
+        <p class="todo__hint">Підказка: клік по задачі — виконано, хрестик — видалити.</p>
+      </form>
+
+      <section class="todo__list-wrap" aria-label="Список задач">
+        <ul class="todo__list js-todo-list">
+        </ul>
+
+        <p class="todo__empty js-todo-empty" hidden>
+          Немає задач. Додай першу 👇
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <script type="module" src="./js/script.js"></script>
+</body>
+
+</html>
