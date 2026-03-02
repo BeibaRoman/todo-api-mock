@@ -1,36 +1,48 @@
+import axios from "axios";
+
 const BASE_URL = "https://69a2bd22be843d692bd21e97.mockapi.io/api/todos";
 
 // POST
-function createTask(task) {
-  return fetch(BASE_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(task),
-  }).then((response) => response.json());
+async function createTask(task) {
+  try {
+    const response = await axios.post(BASE_URL, task);
+    return response.data;
+  } catch (error) {
+    console.error("Помилка створення задачі:", error);
+    throw error;
+  }
 }
 
 // GET
-function getTasks() {
-  return fetch(BASE_URL).then((response) => response.json());
+async function getTasks() {
+  try {
+    const response = await axios.get(BASE_URL);
+    return response.data;
+  } catch (error) {
+    console.error("Помилка читання:", error);
+    throw error;
+  }
 }
 
 // DELETE
-function deleteTask(id) {
-  return fetch(`${BASE_URL}/${id}`, {
-    method: "DELETE",
-  }).then((response) => response.json());
+async function deleteTask(id) {
+  try {
+    const response = await axios.delete(`${BASE_URL}/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Помилка видалення:", error);
+    throw error;
+  }
 }
 
 // PUT
-function updateTask(id, status) {
-  return fetch(`${BASE_URL}/${id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ isDone: status }),
-  });
+async function updateTask(id, status) {
+  try {
+    const response = await axios.put(`${BASE_URL}/${id}`, { isDone: status });
+    return response.data;
+  } catch (error) {
+    console.error("Помилка оновлення:", error);
+    throw error;
+  }
 }
 export { createTask, getTasks, deleteTask, updateTask };

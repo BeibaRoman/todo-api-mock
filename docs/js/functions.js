@@ -1,7 +1,7 @@
 import { refs } from "./refs.js";
 import { createTask, getTasks, updateTask, deleteTask } from "./api.js";
 
-function onFormAddSubmitTask(e) {
+async function onFormAddSubmitTask(e) {
   e.preventDefault();
 
   const value = e.target.elements.task.value.trim();
@@ -10,27 +10,37 @@ function onFormAddSubmitTask(e) {
     e.target.reset();
     return;
   }
-  createTask({ value, isDone: false }).then(addTaskToList).catch(onError);
+
+  try {
+    const newTask = await createTask({ value, isDone: false });
+    addTaskToList(newTask);
+  } catch (error) {
+    onError(error);
+  }
 
   e.target.reset();
 }
 
-function onTaskBehaviour(e) {
+async function onTaskBehaviour(e) {
+  const id = e.target.parentNode.dataset.id;
+
   if (e.target.classList.contains("todo__task")) {
-    e.target.parentNode.classList.toggle("todo__item--done");
-    updateTask(
-      e.target.parentNode.dataset.id,
-      e.target.parentNode.classList.contains("todo__item--done"),
-    ).catch((err) => {
-      e.target.parentNode.classList.toggle("todo__item--done");
-      onError(err);
-    });
+    const li = e.target.parentNode;
+    li.classList.toggle("todo__item--done");
+
+    try {
+      await updateTask(id, li.classList.contains("todo__item--done"));
+    } catch (error) {
+      li.classList.toggle("todo__item--done"); // rollback
+      onError(error);
+    }
   } else if (e.target.classList.contains("todo__remove")) {
-    deleteTask(e.target.parentNode.dataset.id)
-      .then(() => {
-        e.target.parentNode.remove();
-      })
-      .catch(onError);
+    try {
+      await deleteTask(id);
+      e.target.parentNode.remove();
+    } catch (error) {
+      onError(error);
+    }
   }
 }
 
@@ -56,12 +66,13 @@ function createLi({ text, id, isDone }) {
 </li>`;
 }
 
-function onRenderDB() {
-  getTasks()
-    .then((data) => {
-      data.forEach(addTaskToList);
-    })
-    .catch(onError);
+async function onRenderDB() {
+  try {
+    const tasks = await getTasks();
+    tasks.forEach(addTaskToList);
+  } catch (error) {
+    onError(error);
+  }
 }
 
 function onError(err) {
